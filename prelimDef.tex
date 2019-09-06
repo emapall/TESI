@@ -1,6 +1,6 @@
 \subsection{Control System} A \grass{control system} is a triple $\Sigma=(\chi,f,U) $, where 
 \begin{enumerate}
-	\item $\chi$, representing the state of the system, is an \grass{open} subset of $\R^n, \chi\subset\R^n$.
+	\item $\chi$, representing the state of the system, is an \grass{pen} subset of $\R^n, \chi\subset\R^n$.
 	\item $U$, representing the space of possible (\textit{istantaneous})controls, is an open subset of $\R^m,U\subset\R^m$
 	\item $f: \chi \times cl(U) \rightarrow f(x,u)$ is a function which dictates the law with which the system evolves. $f$
 	\begin{enumerate}
@@ -49,8 +49,7 @@ The idea here is that one should seek to minimize the objective function, with t
 \lista{
 \item every \controlledTraj in \carcSS is defined on a time interval of the form $[t_0,t_1]$ with $t_0<t_1;t_0,t_1\in\R $
 \item every \controlledTraj in \carcSS then the said controlled arc is also in Carc($\Sigma,L$), which means it is an L-acceptable controlled arc
-\item every \controlledTraj in \carcSS defined on the time interval $[t_0,t_1]$ then $\chi(t_0)\in\szm$ and $\chi(t_1)\in\som$.
-}
+\item every \controlledTraj in \carcSS defined on the time interval $[t_0,t_1]$ then $\chi(t_0)\in\szm$ and $\chi(t_1)\in\som$.}
 
 Now we can precisely define the optimization problem. There are actually two of these problem, depending on the fact that $t_0,t_1$ may or may not be fixed. We are going to consider the demonstration for the fixed interval one. So,
 \subparagraph{Free interval optimal control problem} Let's have  \lista{
@@ -67,3 +66,39 @@ Now we can precisely define the optimization problem. There are actually two of 
 	then a controlled trajectory {$(\xi_*,\mu_*)\in$\carcSSfix is a \grass{solution to the fixed interval optimal control problem} if \\$\forall\controlledTrajMath\in$\carcSSfix,  $ \objFunction{(\xi_*,\mu_*)}<\objFunction{\controlledTrajMath}$.\\
 	The set of all the possible solutions is denoted as $\mathfrak{P}(\Sigma,L,\szm,\som,[t_0,t_1])$.
 \subparagraph{A simple example} The problem in which the cost is the time with which the system is driven from \sz to \so is simply a free interval optimal control problem, in which there is a control system with Lagrangian $L(x,u)=1$.
+
+\subsection{Hamiltonians}
+The maximum principle is related with the maximization of a Hamiltonian associated with a control system with a certain Lagrangian, so we have the following definitions.\\
+Let \controlSystem be a control system, $L$ a Lagrangian, then
+\lista{
+	\item the \grass{Hamiltonian} is the function $H_\Sigma:\chi\times\R^n\times U\fd \R$ given by
+		\gatherNo{H_\Sigma(x,p,u)=\langle p,f(x,u)\rangle}
+	\item the \grass{extendend Hamiltonian} is the function $H_{\Sigma,L}:\chi\times\R^n\times U\fd \R$ given by
+		\begin{equation*}
+		H_\Sigma(x,p,u)=\langle p,f(x,u)\rangle+L(x,u)=H_\Sigma(x,p,u)+L(x,u)
+		\end{equation*}
+	\item the \grass{maximum Hamiltonian} is the function $H_{\Sigma}^{max}:\chi\times\R^n\fd \overline\R$ given by	
+		\gatherNo{H_{\Sigma}^{max}=sup\{H_\Sigma(x,p,u)|u\in U\}}
+	\item the \grass{maximum extended Hamiltonian} is the function $H_{\Sigma,L}^{max}:\chi\times\R^n\fd \overline\R$ given by	
+		\gatherNo{H_{\Sigma,L}^{max}=sup\{H_{\Sigma,L}(x,p,u)|u\in U\}}
+	\item the variable $p$ is sometimes called \grass{costate}
+}
+
+\subsection{Adjoint response}
+There are another two quantities, namely the adjoint response and the control variations (with the associated variational equation), which are very important in the understanding of the maximum principle. The part relative to adjoint response will now be stated, because it appears in the statement of the principle, while the part concerning brings along concepts that are useful to the demonstration and to the understanding of the geometrical significance of the principle. \\
+So now let \controlSystem be a control system, and \lista{
+	\item $\controlledTrajMath\in Ctraj(\Sigma)$ be a controlled trajectory with time interval $I$, then we define the \grass{adjoint response} for $\Sigma$ along \controlledTraj as a locally absolutely continous map $\lambda:I\fd\R^n$ which also satisfies the following differential equation(s):
+		\begin{multiLineSingleNumber}
+			\statotdot=\boldsymbol{D}_2H_\Sigma(\statot,\lambdat,\mut)\text{    }(=f(x,u))\\
+			\lambdat=-\boldsymbol{D}_1H_\Sigma(\statot,\lambdat,\mut)
+		\end{multiLineSingleNumber}
+	we will see later that this last equation can reach another equivalent form.
+	\item if $L$ is a Lagrangian and $\controlledTrajMath\in Ctraj(\Sigma,L)$is an L-acceptable controlled trajectory with time interval $I$, we then define the \grass{adjoint response} for $(\Sigma,L)$ along \controlledTraj as a locally absolutely continous map $\lambda:I\fd\R^n$ which also satisfies the following differential equation(s):
+	\begin{multiLineSingleNumber}
+		\statotdot=\boldsymbol{D}_2H_{\Sigma,L}(\statot,\lambdat,\mut)\text{    }(=f(x,u))\\
+		\lambdat=-\boldsymbol({D}_1H_{\Sigma,L}(\statot,\lambdat,\mut)
+	\end{multiLineSingleNumber}  
+}
+
+\subsection{Smooth constraint sets}
+Part of the maximum principle deals with the case in which \sz and \so are "smooth", so we might define a \grass{smooth constraint set S} as a subset of the set of possible (control)system states $S\subset\chi$ such that there exists a $C^1$ function $\Phi:\chi\fd\R^k$, such that $S=\Phi^{-1}(0)$ and  also $\Dder\Phi(x)$ is surjective for each $x\in S$
