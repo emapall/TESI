@@ -1,0 +1,44 @@
+\newcommand{\grass}[1]{\textbf{#1}}
+\newcommand{\lista}[1]{
+	\begin{itemize}
+		#1
+\end{itemize}}
+
+
+
+
+%math symbols
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Rgrass}{{\rm I\!R}}
+\newcommand{\f}{$f$}
+
+\newenvironment{multiLineSingleNumber}{
+		\begin{equation}
+		\begin{aligned*}
+	}{
+	\end{aligned*}
+	\end{equation}
+	}
+\newcommand{\equaz}[1]{
+\begin{equation}
+	#1
+\end{equation}}
+%assert: we will NEVER need left-aligned MULTI-LINED math which is also NUMBERED!
+\newcommand{\statot}{\xi (t)}
+\newcommand{\statotdot}{\dot{\xi}(t)}
+\newcommand{\mut}{\mu(t)}
+\newcommand{\fd}{\rightarrow}
+\newcommand{\admContr}[1]{ \mathfrak{U}(#1)}
+\newcommand{\controlSystem}{$\Sigma=(\chi,f,U)$}
+\newcommand{\controlledTraj}{$(\xi,\mu)$}
+\newcommand{\controlledTrajMath}{(\xi,\mu)}
+\newcommand{\I}{\textit{I}}
+\newcommand{\CtrajSet}{Ctraj($\Sigma$)}
+\newcommand{\objFunction}[1]{J_{\Sigma,L}#1}
+
+\newcommand{\sz}{$S_0$}
+\newcommand{\szm}{S_0}
+\newcommand{\so}{$S_1$}
+\newcommand{\som}{S_1}
+\newcommand{\carcSS}{Carc($\Sigma,L,\szm,\som$)}
+\newcommand{\carcSSfix}{Carc($\Sigma,L,\szm,\som,[t_0,t_1]$)}
