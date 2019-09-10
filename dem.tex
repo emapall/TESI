@@ -1,6 +1,10 @@
 the first step we need to take is analyzing the effect of varying a trajectory first. In general, one can expect to vary trajectory followed by the state of a control system in two ways: given a control, varying the initial conditions or, given the initial conditions, varying the control. Nevertheless it is still necessary to develop some tools to \textit{describe} the variation of the trajectory in some ways. 
 
+
+
 \subsection{Variations and adjoint response}
+
+
 \paragraph{Variational and adjoint equations}\mbox{}\\
 Given a control system \controlSystem and am admissible control $\mu:I\fd U$ we have
 \lista{
@@ -26,7 +30,11 @@ Given a control system \controlSystem and am admissible control $\mu:I\fd U$ we 
 Obviously, it is hoped that, given a certain control and initial condition, the solution to \ref{e1.1} is unique, but a-priori it cannot be said.\\
 The geometrical interpretation of the adjoint equation is more subtle, but, in a naive way, one could say that, given an optimal trajectory, the adjoint response is a vector orthogonal to the hyerplane given by (directions of the )the possibile (infinitesimal) variations to that trajectory. 
 
-\subsection{Variation and infinitesimal variation}
+
+
+\subsection{Variations and infinitesimal variations}
+
+
 \paragraph{Definitions}\mbox{}\\
 Let \controlSystem be a control system, $x_0\in\chi$ be an initial condition for eq. \ref{e1.1}, $\tzto\subset\R$ a time interval, $\mu\in\admContr{x_0,t_0,\tzto}$. a \grass{variation} of the trajectory \trajWinCond{\cdot} is map $\sigma:J\times\tzto\fd\chi$ with the following properties 
 \lista{
@@ -44,10 +52,12 @@ Given a variation and it's relative "original" trajectory, there is another impo
 \begin{figure}[H]
 	\includegraphics[width=\linewidth]{imgs/variations.png}
 	\caption{}
-	\ref{fig-variations}
+	\label{fig-variations}
 \end{figure}
 The dotted arrow represent the difference between the variation (at various times and at a given s), and the "original" trajectory, at the same time. The infinitesimal variation is then represented by a vector such that, at a given time $\overline{t},\sigma(s,\overline{t})\approx$\trajWinCond{\overline{t}}$+\delta\sigma(\overline{t})*s$
 Actually, there is another interpretation to the image, in which the dotted arrow are the vectors represent the \grass{infinitesimal} variations, and the dotted line is just the envelope of the dotted arrows calculated at different times. In this case, the dotted part and the continuous-line of the figure have scales that have nothing to do one with each other. Nevertheless, in both interpretations, it is possible to understand the concept of a stable, unstable and "indifferent" trajectory, in which a disturbance in the trajectory is amplified rather than muted.
+
+
 \paragraph{A theorem about infinitesimal variations} 
 Here it will be stated that if a map is solution of equation \ref{variational-equation} then it is an infinitesimal variation , and vice versa.\\
 Let \controlSystem be a control system, $x_0\in\chi$ be an initial condition for eq. \ref{e1.1}, $\tzto\subset\R$ a time interval, $\mu\in\admContr{x_0,t_0,\tzto}$. Given a map $v:\tzto\fd\R^n$ the statements \lista{
@@ -57,7 +67,7 @@ Let \controlSystem be a control system, $x_0\in\chi$ be an initial condition for
 are equivalent. 
 
 \subparagraph{The foundamental matrix $\Phi$} During the demonstration of the preceding theorem, an $n\times n$ linear map $\Phi(t):\R^n\fd\R^n$ has been defined, as a map such that $\Phi(t)\cdot=\Dderarg{2}$\trajWinCond{t}$\cdot w$. \\
-By differentiation one can see that $\Phi(t)$ sathisfies this matrix differential initial value problem:
+By differentiation one can see that $\Phi(t)$ satisfies this matrix differential initial value problem:
 \begin{gather*}
 \dot{\Phi}(t)=\Dderarg{1}f(\trajWinCondMath{t},\mut)\circ;\text{   	   }\Phi(t_0)=Id_{n\times n} 
 \end{gather*}
@@ -66,13 +76,47 @@ We thus define $\boldsymbol{\fondMatMath{\tau}{t}} $ as the solution to the matr
 \begin{equation*}
 	\dot{\Phi}(t)=\Dderarg{1}f(\trajWinCondMath{t},\mut)\circ;\text{   	   }\Phi(\tau)=Id_{n\times n} ...
 \end{equation*}
+Where of course $t,\tau\in\tzto$.\\
 
 The importance of this matrix resides in the fact that, being the variational equation \ref{variational-equation} a linear one and being $\Phi$ the foundamental matrix of the equation, it is true that, for a variation $v(t)$ (which is also a solution to the variational equation, because of the theorem), $v(t)=\fondMatMath{t_0}{t}\cdot v(t_0)$\\
 $\Phi$ also has some properties, about the composition of the 
 
+
+
 \subsection{Properties of adjoint repsonse }
-\paragraph[prop 4.4]{Hamilton's and adjoint equation}
-\paragraph[prop 4.5]{Adjoint response and variations}
-\subparagraph[4.6]{A corollary}
+What this theorem says is that seeing the adjoint repsonse as a solution of the adjoint equation \ref{adjoint-equation} and of the adjoint equation defined with the hamiltonians \ref{adjoint-hamiltonian} is the same exact thing.
+
+
+\paragraph[prop 4.4]{Hamilton's and adjoint equation}\mbox{}\\
+\grass{Theorem}: given a control system \controlSystem,  an admissible control $\mu:I\fd U$,and two maps $\xi:I\fd\chi;\lambda:I\fd\R^n$, those two statements are equivalent: \lista{
+	\item the curve $t\fd(\statot,\lambdat)$ satisfies the adjoint equation \ref{adjoint-equation}
+	\item the curve $t\fd(\statot,\lambdat)$ satisfies the differential equation \ref{adjoint-hamiltonian} recalled here:
+		\begin{gather*}
+				\statotdot=\boldsymbol{D}_2H_\Sigma(\statot,\lambdat,\mut)\\
+				\lambdat=-\boldsymbol{D}_1H_\Sigma(\statot,\lambdat,\mut)
+		\end{gather*}
+}
+This theorem is demonstrated simpy by differentiating the given quantities, and by using the properties of dot product. 
+
+
+\paragraph[prop 4.5]{Adjoint response and variations}\mbox{}\\
+\grass{Theorem} Let \controlSystem be a control system, $x_0\in\chi$ be an initial condition for eq. \ref{e1.1}, $\tzto\subset\R$ a time interval, $\mu\in\admContr{x_0,t_0,\tzto}$. If $v$ and $\lambda$ are two maps $v,\lambda:\tzto\fd\R^n$ that satisfy the variational and adjoint equation respectively (toghether with the trajectory $t\fd$\trajWinCond{t}), then the standard scalar product between those two vectors is constant with time, which is
+\begin{equation*}
+	\langle\lambdat,v(t)\rangle=\langle\lambda(t_0),v(t_0)\rangle
+\end{equation*}
+Proof:
+\begin{gather*}
+	\frac{d}{dt}\langle\lambdat,v(t)\rangle=\\
+	=\langle\lambdatdot,v(t)\rangle+	\langle\lambdat,\dot{v}(t)\rangle=\\
+	=-\langle\Dderarg{1}f^T(\controlledTrajMath)\cdot\lambdat,v(t)\rangle +\langle\lambdat,\Dderarg{1}f^T(\controlledTrajMath)\cdot v(t)\rangle=\\
+	=0
+\end{gather*}
+
+\subparagraph[4.6]{A corollary} An important consequence of this fact is that if the two vectors $v,\lambda$ are orthogonal at the initial moment, they remain orthogonal throughout the whole evolution of the system. 
+
+
 \paragraph[prop 4.7]{Foundamental matrix for the adjoint response}
-\subsection{Needle variations}
+\grass{Theorem} Let \controlSystem be a control system, $x_0\in\chi$ be an initial condition for eq. \ref{e1.1}, $\tzto\subset\R$ a time interval, $\mu\in\admContr{x_0,t_0,\tzto}$, and let $\tau\in\tzto$. Then the solution of the initial value problem 
+\gatherNo{\lambdatdot=-\Dderarg{1}f^T(\statot,\mut)\cdot v(t),\text{      	}\lambda(\tau)=\lambda_\tau }
+is the following one:
+\gatherNo{t\fd\lambdat=\fondMatMath{t}{\tau}^T\cdot\lambda_\tau  }
