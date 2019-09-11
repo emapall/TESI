@@ -13,6 +13,7 @@ Since $f$ is function of the current state of the system and of the current cont
 \equaz{\statotdot=f(\statot,\mu(t))\label{e1.1}}
 where obviously, for for each $t,\statot\in\chi$ is the "current" (at time $t$)state of the system, and $\mu(t)\in U$ is the current (at time $t$) control, dictated by the control law $\mu(t)$.
 
+
 \subsection{Control and Trajectories}
 The idea here is that we want some limitations on the function $t\rightarrow\mut$, because, starting from a certain state, we want the control to originate, through \ref{e1.1}, trajectories that, at least, "makes sense". So, given a control system \controlSystem  we define\\
 \begin{itemize}
@@ -67,6 +68,7 @@ Now we can precisely define the optimization problem. There are actually two of 
 	The set of all the possible solutions is denoted as $\mathfrak{P}(\Sigma,L,\szm,\som,[t_0,t_1])$.
 \subparagraph{A simple example} The problem in which the cost is the time with which the system is driven from \sz to \so is simply a free interval optimal control problem, in which there is a control system with Lagrangian $L(x,u)=1$.
 
+
 \subsection{Hamiltonians}
 The maximum principle is related with the maximization of a Hamiltonian associated with a control system with a certain Lagrangian, so we have the following definitions.\\
 Let \controlSystem be a control system, $L$ a Lagrangian, then
@@ -83,6 +85,7 @@ Let \controlSystem be a control system, $L$ a Lagrangian, then
 		\gatherNo{H_{\Sigma,L}^{max}=sup\{H_{\Sigma,L}(x,p,u)|u\in U\}}
 	\item the variable $p$ is sometimes called \grass{costate}
 }
+
 
 \subsection{Adjoint response}
 There are another two quantities, namely the adjoint response and the control variations (with the associated variational equation), which are very important in the understanding of the maximum principle. The part relative to adjoint response will now be stated, because it appears in the statement of the principle, while the part concerning brings along concepts that are useful to the demonstration and to the understanding of the geometrical significance of the principle. \\
@@ -101,5 +104,17 @@ So now let \controlSystem be a control system, and \lista{
 	\end{multiLineSingleNumber}  
 }
 
+
 \subsection{Smooth constraint sets}
 Part of the maximum principle deals with the case in which \sz and \so are "smooth", so we might define a \grass{smooth constraint set S} as a subset of the set of possible (control)system states $S\subset\chi$ such that there exists a $C^1$ function $\Phi:\chi\fd\R^k$, such that $S=\Phi^{-1}(0)$ and  also $\Dder\Phi(x)$ is surjective for each $x\in S$
+
+\subsection{Reachable set}
+Let \controlSystem be a control system, $x_0\in\chi$ be an initial condition for eq. \ref{e1.1}, $\tzto\subset\R$ a time interval, $\mu\in\admContr{x_0,t_0,\tzto}$. We then define \lista{
+	\item the \grass{reachable set} from $x_0$ at $t_0$ in time $t_1-t_0$ as 
+	\[\reachSetMath{t_1}=\{\trajWinCondMath{t_1}|\mu\in\admContr{\tzto} \}  \]
+	
+	\item the \grass{reachable set } from $x_0$ at $t_0$ as
+	\[\mathfrak{R}(x_0,t_0)=\cup_{t_1\in[t_0,\infty]} \reachSetMath{t_1}  \]
+	
+}
+Little note: since f does not depend explicitly on time, then \reachSet{t_1}$=\mathfrak{R}(x_0,0,t_0)$.
