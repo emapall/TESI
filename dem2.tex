@@ -81,8 +81,69 @@ We now define the analogue to \fixIntTanCone{t} but for multi needle variations.
 	\item the \grass{tangent r-simplex cone data} as a collection $\{\Theta_1,...,\Theta_r\}$ of multi needle variations. \\
 	By using this notation:$\Theta_i=\{\theta_ij\};i=1,..,r;j=1,..,k_i$, we require that the times $\tau_ij$ are all distincts, are all Lebesgue points-
 	
-	\item given the multi needle variations $v_{\Theta_i}$associated with the relativa r-simplex cone data, the coned convex hull of ${v_{\Theta_i}$  is actually an r-simplex cone and defined as the \grass{tangent r-simplex cone}. 
+	\item given the multi needle variations $v_{\Theta_i}$associated with the relativa r-simplex cone data, the coned convex hull of $v_{\Theta_i}$  is actually an r-simplex cone and defined as the \grass{tangent r-simplex cone}. 
 }
 Of course, when not explicitly said, the previous definitions where all relative to the fixed-interval case.
 
-\paragraph[lemma 5.5]{Carac}
+\paragraph[lemma 5.5]{Theorem: various forms for the tangent cone}
+The following sets are actually the same set: \lista{
+	\item \fixIntTanCone{t}
+	\item given r=$dim(\fixIntTanConeMath{t})$, the closure of the set formed by the union of all the possible tangent r-simplex cones
+	\item the closure of the set formed by the union of all the sets $\{\fondMatMath{\tau}{t}\cdot\fixIntTanConeMath{\tau}| \tau\in Leb(\mu,x_0,t_0,t)\}$
+}
+Despite the difficulty of interpretation, this theorem tells us that in the end it does not matter if variations to the control are obtained through single needle or multi needle variations. The equivalence of the first one and the third one is easier to justify and understand, using the property of concatenation of $\Phi$ for which $\fondMatMath{a}{b}\cdot\fondMatMath{b}{c}=\fondMatMath{a}{c}$.
+
+
+\subsection{Significative theorems}
+\paragraph[5.10]{Theorem: points in the tangent cones are "interior" to the reachable set}
+Given the usual control system, initial condition and $\tzto$, and given a tangent cone \fixIntTanCone{t}, for a $t\in\tzto$, if a $v_0$ exists such that it is in the internal part of $K$,then\\
+There exists: a cone $A\subset int(K)$ and an $r>0$ such that \lista{
+\item $v_0\in int(A)$
+\item the intersection B between A and the ball of center \trajWinCond{t} (which is the "current" state of the system) and radius r is contained in the reachable set $B\in$\reachSet{t}.}
+
+Basically what this theorem says is not properly that the tangent cone points towards the interior of the reachable set. Although this is in a certain sense true, his theorem says something a slightly less powerful. The first step is to understand that, since $\lambda v_0$ is in the internal part of the cone for every $\lambda>0$, then one can choose a variational vector with the same direction of $v_0$ such that by moving the trajectory in that direction (which is obtainable by applying the corresponding control variation) one still remains in the reachable set. 
+
+\paragraph[5.12-5.14]{Maximum Hamiltonians and tangent cones}
+In the statement of maximum principle tangent cones do not appear, but maximum Hamiltonian do. Actually, one Could just be satisfied with the Hamiltonian part, in the sense that, once the adjoint response is found (not an easy task, but the orthogonality with the smooth set \so and \sz can help), the only remaining part is to find a control that maximizes the Hamiltonian. Those and only those controls are candidates for optimality. 
+
+Nevertheless, it is interesting to see the connections between tangent cones and Hamiltonians, and to have a look at the (geometrical) significance of the following theorems.\\
+The first one is going to be about the binding between maximization of Hamiltonian and the existance of a separating hyperplane between the costate and, in a sense, possible "controls". This, point to point in time. 
+
+\subparagraph[5.12]{Theorem:}Given a control system \controlSystem, a costate $p$ and a control $\overline{u}$, then\\
+$H_\Sigma(x,p,\overline{u})=H_{\Sigma}^{max}(x,p)$ if and only if 
+\[ \text{for every }v\in\{f(x,u)-f(x,\overline{u})|u\in U \}\text{it is valid that }\langle p,v \rangle <0 \]
+\grass{Proof:} 
+\begin{gather*}
+	H_\Sigma(x,p,\overline{u})=H_{\Sigma}^{max}(x,p) \iff\\
+	H_\Sigma(x,p,\overline{u})\ge H_\Sigma(x,p,u) \iff \\
+	H_\Sigma(x,p,\overline{u})- H_\Sigma(x,p,u) \ge0 \iff\\
+	\langle p,f(x,u)-f(x,\overline{u}) \le 0\rangle \iff\\
+	\langle p,v \rangle \leq 0
+\end{gather*}
+for v defined as before. \\
+
+
+\paragraph[5.13]{Hamiltonians and adjoint response}
+There is now another theorem, regarding the connection between adjoint response and Hamiltonian. What this theorem says is that one can find a suitable costate $p$, with which he may start to try to maximize the Hamiltonian, by simply taking the adjoint response coming from eq. \ref{adjoint-equation}, provided a suitable initial condition for this equation is found.  So
+\subparagraph[lemma 5.13]{Theorem:} Given the usual control system, initial condition, time interval, and supposing that for a $\tau\in\tzto$ there exists a vector $\overline{\lambda}\in\R^n$ ad a cone A that contains $\fixIntTanConeMath{\tau}\subset A$ such that\\
+for each $v\in A \implies \langle \overline{\lambda},v\rangle$, then \\
+by taking the adjoint response with initial condition for equation \ref{adjoint-equation} that $\lambda(\tau)=\overline{\lambda}$ then it is true that, for every $t\in Leb(\mu,x_0,t_0,\tau)$
+\[ H_\Sigma(\trajWinCondMath{t},\lambdat,\mut)=H_\Sigma^{max}(\trajWinCondMath{t},\lambdat) \]
+
+As already anticipated, the first of the two preceding lemmas tells us that, given and certain $p$ and a certain state of the system, at a certain time $t$, the control that maximizes the Hamiltonian is the one that, if we refer single needle variations to that base control, the variational cone \fixIntTanCone{t} possesses a support hyperplane and that is individuated as the one being perpendicular to $p$. This tells us two things: first, that trajectories can only be moved "one way", by varying the control. This is also trivial because if a control maximizes the Hamiltonian, than by varying it, there is no other option than to get a lower valued of that Hamiltonian. The second thing is that, generally, optimal controls will be found on the boundary of the set of possible control (at a given state and time).\\
+The second theorem is more related to the properties of the adjoint equation. First, one has to acknowledge that $v$ is a needle variation (with data $(t,1,w)$). Secondly,  the system lies at a certain state at time $\tau$. The system has been steered from the initial conditions to there by the control $\mut$. If at $\tau$ the variational tangent cone \textit{(still) }possesses a supporting hyperplane, then we are able to find a function $p:[t_0,\tau]\fd\R^n$ such that it maximizes the Hamiltonian. This function is, because of the properties of the adjoint and variational equations and the fundamental matrix, the adjoint response. But besides having found the costate that maximizes the Hamiltonian at any given moment, this theorem tells us also something about the control being, if not optimal, at least "extremal" in some sense. At least one can conclude, via the first lemma (all the implications in the demonstration are double sided) that the variational tangent cone \fixIntTanCone{a} possessed a supporting hyperplane $\forall a\in[t_0,\tau]$.\\
+As a last remark: the last of those two theorems tells us only something about the past, which is, from the initial instant to $\tau$. It does not give us ways to predict what the optimal control for the instants after $\tau$.\\
+The following theorem tells us that, if for a given control and at a given time $\tau$ there exists a supporting hyperplane for \fixIntTanCone{\tau} then the corresponding Hamiltonian is zero. Which is, the supporting hyperplane for the cone "touches" the set of possible $f(x,u)$. This is evdent by referring to figure \ref{fig-5.2}. Please note that if the gray shaded set in the figure has a "smooth border", then the cone of all possible variations (which is, the cone generating from all $v$) is the whole semi-hyperspace containing the set. 
+
+\begin{figure}[h!]
+	\includegraphics[width=\linewidth]{imgs/512-514.png}
+	\caption{text}
+	\label{fig-5.2}
+\end{figure}
+
+So now, 
+\subparagraph[5.14]{Theorem:} Demonstration of theorem 5-14 is not that clear in the book, so for now, it is skipped.
+
+
+\subsection{Controlled trajectories and boundary of reachable set}
+The following very important theorem tell us two very important things. If, in the end (at $t_1$) the trajectory lies on the boundary of the reachable set, then first, there exists an adjoint response that maximizes the Hamiltonian for any instant in $\tzto$ (or, better to say, in the Lebesgue points for $f$ in that interval) and thus, secondly, the control is optimal, since it maximizes the Hamiltonian. 
