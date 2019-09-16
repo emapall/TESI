@@ -133,7 +133,9 @@ by taking the adjoint response with initial condition for equation \ref{adjoint-
 As already anticipated, the first of the two preceding lemmas tells us that, given and certain $p$ and a certain state of the system, at a certain time $t$, the control that maximizes the Hamiltonian is the one that, if we refer single needle variations to that base control, the variational cone \fixIntTanCone{t} possesses a support hyperplane and that is individuated as the one being perpendicular to $p$. This tells us two things: first, that trajectories can only be moved "one way", by varying the control. This is also trivial because if a control maximizes the Hamiltonian, than by varying it, there is no other option than to get a lower valued of that Hamiltonian. The second thing is that, generally, optimal controls will be found on the boundary of the set of possible control (at a given state and time).\\
 The second theorem is more related to the properties of the adjoint equation. First, one has to acknowledge that $v$ is a needle variation (with data $(t,1,w)$). Secondly,  the system lies at a certain state at time $\tau$. The system has been steered from the initial conditions to there by the control $\mut$. If at $\tau$ the variational tangent cone \textit{(still) }possesses a supporting hyperplane, then we are able to find a function $p:[t_0,\tau]\fd\R^n$ such that it maximizes the Hamiltonian. This function is, because of the properties of the adjoint and variational equations and the fundamental matrix, the adjoint response. But besides having found the costate that maximizes the Hamiltonian at any given moment, this theorem tells us also something about the control being, if not optimal, at least "extremal" in some sense. At least one can conclude, via the first lemma (all the implications in the demonstration are double sided) that the variational tangent cone \fixIntTanCone{a} possessed a supporting hyperplane $\forall a\in[t_0,\tau]$.\\
 As a last remark: the last of those two theorems tells us only something about the past, which is, from the initial instant to $\tau$. It does not give us ways to predict what the optimal control for the instants after $\tau$.\\
-The following theorem tells us that, if for a given control and at a given time $\tau$ there exists a supporting hyperplane for \fixIntTanCone{\tau} then the corresponding Hamiltonian is zero. Which is, the supporting hyperplane for the cone "touches" the set of possible $f(x,u)$. This is evdent by referring to figure \ref{fig-5.2}. Please note that if the gray shaded set in the figure has a "smooth border", then the cone of all possible variations (which is, the cone generating from all $v$) is the whole semi-hyperspace containing the set. 
+
+\paragraph[TODO]{TODO: DECIDE WHETHER TO LEAVE THIS }
+The following theorem tells us that, if for a given control and at a given time $\tau$ there exists a supporting hyperplane for \fixIntTanCone{\tau} then the corresponding Hamiltonian is zero. Which is, the supporting hyperplane for the cone "touches" the set of possible $f(x,u)$. This is evdent by referring to figure \ref{fig-5.2}. 
 
 \begin{figure}[h!]
 	\includegraphics[width=\linewidth]{imgs/512-514.png}
@@ -146,4 +148,65 @@ So now,
 
 
 \subsection{Controlled trajectories and boundary of reachable set}
-The following very important theorem tell us two very important things. If, in the end (at $t_1$) the trajectory lies on the boundary of the reachable set, then first, there exists an adjoint response that maximizes the Hamiltonian for any instant in $\tzto$ (or, better to say, in the Lebesgue points for $f$ in that interval) and thus, secondly, the control is optimal, since it maximizes the Hamiltonian. 
+The following very important theorem tell us two very important things. If, in the end (at $t_1$) the trajectory lies on the boundary of the reachable set, then first, there exists an adjoint response that maximizes the Hamiltonian for any instant in $\tzto$ (or, better to say, in the Lebesgue points for $f$ in that interval) and thus, secondly, the control is optimal, since it maximizes the Hamiltonian. \\
+Formally said,
+
+\subparagraph[5.16]{Theorem:} Given the usual control system, initial condition and time interval, given a control $\mu_*\in\admContr{\tzto}$, and given $\xi(\mu_*,x_0,t_0,t_1)$ (abbreviate $\xi(\mu_*,x_0,t_0,\cdot$ simply with $\xi_*$ ),\\
+if $\xi_*(t_1) \in bd(\reachSetMath{t_1})$ then \lista{
+	\item there exists an adjoint response $\lambda_*:\tzto\fd\R^n$ for $\Sigma$ for the controlled trajectory $(\xi_*,\mu_*)$, 
+	\item $H_\Sigma(\xi(\mu_*,x_0,t_0,t),\lambda_*(t),\mu_*(t))=H_\Sigma^{max}(\xi(\mu_*,x_0,t_0,t),\lambda_*(t))$ for (almost) every $t\in\tzto$
+}
+\grass{Proof:} Since $\xi_*(t1)$ is on the boundary of the reachable set, then there exists a sequence $\{x_j\}$ in $\chi\backslash closure(\reachSetMath{t_1})$ that converges to that point. Now, let's take another sequence $v_j=\frac{x_j-\xi_*(t_1)}{||x_j-\xi_*(t_1)||}$. Since this sequence lies on the unitary sphere in $R^{n}$ and this set is compact, there exists a converging subsequence, that converges to $v_0$.\\
+We now claim that $v_0\notin int(K(\mu_*,x_0,t_0,t_1))$:\\
+\begin{minipage}{0.15\linewidth}
+	 \mbox{}
+\end{minipage}
+\begin{minipage}{0.8\linewidth}
+	 Supposing that $v_0$ lies in the internal part of the cone, then there exists a suffiecntly large $N$ such that, for $j>N$, every $v_j$ lies in the internal of the cone. Using the first theorem from the section "significative theorems" implies that for a certain $N$ also $x_{j>N}\in int(K(\mu_*,x_0,t_0,t_1))$. Indeed, a whole ball with center $\xi_*(t1)+v_j$ and radius $r$ is contained in the cone. In order to prove the last claim, the center of the ball is moved along the direction of $v_j$ until it coincides con $x_j$. One could (and should, in the case that $||x_j-\xi_*(t_1)||<1$) actually also re-scale the radius, and the re-scaled ball still lies in the cone. 
+\end{minipage}\\
+Given this, a topological lemma states that there exists a separating hyperplane $P(t_1)$ such that vector $v_0$ is contained in a half-space and the cone is contained in the other one.\\
+Now take a the vector called $\lambda_*(t_1)$ orthogonal to $P(t_1)$ lying in the half space not containing the cone, and thus \[\langle \lambda_*(t_1),v\rangle\text{      }v\in K(\mu_*,x_0,t_0,t_1).\]
+To conclude, we just need to take the unique adjoint response that has the value $\lambda_*(t_1)$ at time $t_1$, and use the preceding theorems. 
+
+\paragraph{Interpretation}
+In the following figures we can have a deeper insight of the passages and geometrical constructions behind this theorem. In the first figure, \ref{fig-5.3.1} one can see that the adjoint response points somehow "outside" of the reachable set. Indeed, if the objective is staying on the boundary of the expanding reachable set, it sounds logical to choose a control, and thus an $f(\xi,\mu)$ that "points outside the reachable set, as much as it can". This effort is represented in the maximization of the Hamiltonian,  which is, by the maximization of the scalar product between the possible $f$ and $\lambda$, as depicted in \ref{fig-5.2}. %\ref{fig-5.3.2}
+
+\begin{figure}[h!]
+	\includegraphics[width=0.4\linewidth]{imgs/5-3-L.png}
+	\caption{"Zoom" on the cone, part of the reachable set and final point of the trajectory at the final instant}
+	\label{fig-5.3.1}
+\end{figure}
+
+An important observation must be made, which is that the hyperplane actually separates the cone from the vector $v_0$ from the cone $K$, so the hyper plane does not have to be tangent to the reachable set, as seen in figure %\ref{fig-5.3.2}.\\
+Finally, the last figure, shows us the evolution of the adjoint response, of the separating plane $P$ and of the trajectory (dotted in the figure). As already said, the control should be such that, instant by instant, the function steering the system $\statotdot$ has maximal projection in the direction of $\lambda$.
+\begin{figure}[h!]
+	\includegraphics[width=\linewidth]{imgs/5-3-R.png}
+	\caption{Depiction of the situation at two different instants, the final one and one intermediate, $\tau$}
+\end{figure}
+There is a last theorem for this section, which states that once a system is fallen from the border of the reachable set, it remains in its internal for all the successive instants. Basically, in a crowd of runners where everybody runs at the (same and uniform) maximum speed, once a runner diminishes the speed for an ammount of time that is not Lebesgue-neglettable, it will fall inside the crowd, and won't be able to return on the border anymore. 
+
+\subparagraph[5.17]{Theorem:trajectories in the interior of the reachable set remain in the interior} Let's have the usual control system, initial condition, time interval and admissible control. If, for a certain instant $\tau\in[t_0,t_1)$ it happens that $\trajWinCondMath{\tau}\in int(\reachSetMath{\tau})$ then\\
+\trajWinCond{t}$\in int(\reachSetMath{t})$ for all $t\in(\tau,t_1]$
+\grass{TODO:PROOF. it requires to give as good that the map F is a diffeomorphism.}
+
+
+
+\subsection{Extended system, extended reachable set and optimal trajectories}
+Before stating the penultimate theorem, there is just another small definition to be made, which is the one of extended system, which is just the extension from n to n+1 dimensions for the state of the system, where the new, 0-th dimension is the value of the cost function so far.
+
+\subparagraph[6.1]{Definition: Extended System} Let $L$ be a Lagrangian for control system \controlSystem. We define the \grass{extended system} as $\hat{\Sigma}=(\hat\chi,\hat{f},U)$ just by asking that \lista{
+	\item $\hat\chi=\R\times\chi$
+	\item $\hat f((x^0,x),u)=(L(x,u),f(x,u))$
+}
+Note that now the equations governing the extended system are 
+\begin{gather*}
+	 \dot{\xi}^0(t)=L(\statot,\mut)\\
+	\statotdot=f(\statot,\mut)\\
+	\implies\\
+	\xi^0(\tau)=\int_{t_0}^{\tau}L(\statot,\mut)dt
+\end{gather*}
+Which is precisely the cost function.\\
+There now will be an important theorem, that lies an important layer in the proof of the principle. In fact, so far, the optimality of a trajectory has always been related to the maximization of an Hamiltonian, as is stated in the proof of the principle. But, looking deeper into the previous theorems, the maximization of the Hamiltonian just ensures that the trajectory lies on the boundary of the reachable set (that it's always on the "frontline of runners, so to say". But the fact that the trajectory runs through the space of admissible states as possibile has nothing to do, a-priori, with the cost associated to that controlled trajectory. 
+\subparagraph[6.2]{Theorem:}Let $L$ be a Lagrangian for control system \controlSystem., $\szm,\som\subset\chi$ be sets, and suppose that $(\xi_*,\mu_*)$ is a solution to the fixed interval problem (which is, $(\xi_*,\mu_*)\in\mathfrak{P}(\Sigma,L,\szm,\som,[t_0,t_1])$, then\\
+$\hat{\xi}_*(t_1)\in boundary(\extReachSetStarMath{t_1})
+$

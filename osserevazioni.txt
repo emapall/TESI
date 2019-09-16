@@ -1,3 +1,7 @@
 -lemma 5.14: va incluso?
 
 -figura 5.3 pg 65: il piano P(t1) non deve necessariamente essere tangente ANCHE al reachable set(?). Basta che, al più, sia "tangente" al cono. Altresì detto: il piano P(t1) separa l'adjoint response e il cono, non separa l'adjoint response ed il reachable set. 
+
+-anche alla luce del disegnino sul libretto piccolo, qual'è il senso dell'Hamiltoniana che sia 0? Quindi il disegno a mano è sbagliato?
+
+-5.17
