@@ -5,3 +5,5 @@
 -anche alla luce del disegnino sul libretto piccolo, qual'è il senso dell'Hamiltoniana che sia 0? Quindi il disegno a mano è sbagliato?
 
 -5.17
+
+-6.3: la dimostrazione, in fondo, usa il teorema 5.16, che vale per l'hamiltoniana, ma non per l'ham. estesa o per quella normale riferita all'ext system. Vale lo stesso?
