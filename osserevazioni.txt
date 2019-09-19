@@ -1,9 +1,3 @@
--lemma 5.14: va incluso?
-
--figura 5.3 pg 65: il piano P(t1) non deve necessariamente essere tangente ANCHE al reachable set(?). Basta che, al più, sia "tangente" al cono. Altresì detto: il piano P(t1) separa l'adjoint response e il cono, non separa l'adjoint response ed il reachable set. 
-
--anche alla luce del disegnino sul libretto piccolo, qual'è il senso dell'Hamiltoniana che sia 0? Quindi il disegno a mano è sbagliato?
-
--5.17
-
--6.3: la dimostrazione, in fondo, usa il teorema 5.16, che vale per l'hamiltoniana, ma non per l'ham. estesa o per quella normale riferita all'ext system. Vale lo stesso?
+Obviously, we hope that given a certain control and initial condition, the solution to \eqref{e1.1} is unique, but a-priori it cannot be said.\\
+The geometrical interpretation of the adjoint equation is more subtle, but, in a naive way, one could say that, given an optimal trajectory, the adjoint response is a vector orthogonal to the hyerplane given by (the directions of ) the possible (infinitesimal) variations to that trajectory.  
+SONO DUE COSE ENTRAMBE SBAGLIATE!
