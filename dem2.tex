@@ -1,45 +1,44 @@
 \subsection{Needle variations}
-In the beginning of section 3 we talked about the variations of trajectories, and analyzed those variations \textit{a-posteriori}, trying to describe them. Now we are going to see, so to say, \textit{the elementary (infinitesimal) way of producing said variations.} This will be of course through control variations, not through the variation of initial condition.
+We introduced a tool to describe variations of trajectories. Now we are going to analyze a way of causing trajectory variations. This will be of made with control variations, not through the variation of initial conditions.
 
 
 \paragraph{Needle variation (fixed interval)}
-et \controlSystem be a control system, $x_0\in\chi$ be an initial condition for eq. \ref{e1.1}, $\tzto\subset\R$ a time interval, $\mu\in\admContr{x_0,t_0,\tzto}$. We then define 
+Let \controlSystem\space be a control system, $x_0\in\chi$ be an initial condition for eq. \eqref{e1.1}, $\tzto\subset\R$ a time interval, $\mu\in\admContr{x_0,t_0,\tzto}$. We then define 
 \lista{
-	\item \grass{fixed interval needle variation \underline{data}} as a triple $\theta=(\tau_\theta,l_\theta,\omega_\theta)$ for which \lista{
-		\item $\tau_\theta\in(t_0,t_1]$
-		\item $l_\theta\in\R_{\geq0}$
-		\item $\omega_\theta\in U$
+	\item the \grass{fixed interval needle variation data} as a triple $\theta=(\tau_\theta,l_\theta,\omega_\theta)$ for which \lista{
+		\item $\tau_\theta\in(t_0,t_1]$,
+		\item $l_\theta\in\R_{\geq0}$,
+		\item $\omega_\theta\in U$.
 	}
 
-	\item the \grass{control variation} of the control $\mu$ associated to the relative fixed interval needle variation data $\theta$ is the map $\mu_\theta$ is the map $mu_\theta:J\times\tzto\fd U$ such that
+	\item the \grass{control variation} of the control $\mu$ associated to the relative fixed interval needle variation data $\theta$ is the map $\mu_\theta$ is the map $\mu_\theta:J\times\tzto\fd U$ such that
 	\[\mu_\theta = \left\{ \begin{array}{lr}
-	\omega_\theta & \mbox{if $t\in[\tau_\theta-s*l_\theta,\tau_\theta]$}\\
+	\omega_\theta & \mbox{if $t\in[\tau_\theta-sl_\theta,\tau_\theta]$}\\
 	\mut & \mbox{otherwise}.\end{array}
 	\right.	\]
-	Where $J=[0,s_0]$ is an interval sufficiently small so that $\mu_\theta(s,t)$ is an admissible control for each $s\in J$
+	Where $J=[0,s_0]$ is an interval sufficiently small so that $\mu_\theta(s,t)$ is an admissible control for each $s\in J$.
 	Just to have an idea, this is how the function $\mu_\theta$ can look like for a certain $s>0$
 	\begin{figure}[H]
 		\includegraphics[width=\linewidth]{imgs/needle-variation.png}
 		\caption{}
 		\label{fig-needle-variation}
 	\end{figure}
-	\item \grass{fixed interval needle (\textit{infinitesimal})variation} associated with the control $\mu$, the trajectory \trajWinCond{\cdot} and the variation data $\theta$ as a vector of $\R^n$ defined as 
-	\[v_\theta = \frac{d}{ds}\bigg|_{s=0} \xi(\mu_\theta(s,\cdot),x_0,t_0,\tau_\theta),\] when such derivative exists
+	\item the \grass{fixed interval needle (infinitesimal) variation} associated with the control $\mu$, the trajectory \trajWinCond{\cdot} and the variation data $\theta$ as a vector of $\R^n$ defined as 
+	\[v_\theta = \frac{d}{ds}\bigg|_{s=0} \xi(\mu_\theta(s,\cdot),x_0,t_0,\tau_\theta),\] when such derivative exists.
 }
-This limit exists at almost any instant, since it exists for every instant that is a Lebesgue point for $t\fd f(\trajWinCondMath{t},\mut)$. Before stating this formally, we need the definition of $Leb(\mu,x_0,t_0,t)$: it's the set of Lebesgue points if $\tau\fd f(\trajWinCondMath{\tau},\mu(\tau)), \tau\in(t_0,t)$. Then,
+This limit exists at almost any instant, as the next theorem says. Before though we need the definition of $Leb(\mu,x_0,t_0,t)$: it's the set of Lebesgue points of $\tau\fd f(\trajWinCondMath{\tau},\mu(\tau))$ in the interval $(t_0,t)$.
 
-\paragraph[prop 4.9]{Theorem:existence and form of fixed interval needle variations}\mbox{}\\
-Let \controlSystem be a control system, $x_0\in\chi$ be an initial condition for eq. \ref{e1.1}, $\tzto\subset\R$ a time interval, $\mu\in\admContr{x_0,t_0,\tzto}$. Let then $\theta=(\tau_\theta,l_\theta,\omega_\theta)$ be a fixed interval needle variation data, with $\tau_\theta\in Leb(\mu,x_0,t_0,t_1)$. Then the fixed interval variation associated with those data exists and it's given by
-\[ v_\theta=l_\theta*\bigg(f(\trajWinCondMath{\tau_\theta},\omega_\theta) - f(\trajWinCondMath{\tau_\theta},\mu(\tau_\theta) )  \bigg) \]
+\paragraph[prop 4.9]{existence and form of fixed interval needle variations}\mbox{}\\
+\grass{Theorem:} Let \controlSystem\space be a control system, $x_0\in\chi$ be an initial condition for eq. \eqref{e1.1}, $\tzto\subset\R$ a time interval, $\mu\in\admContr{x_0,t_0,\tzto}$. Let then $\theta=(\tau_\theta,l_\theta,\omega_\theta)$ be a fixed interval needle variation data, with $\tau_\theta\in Leb(\mu,x_0,t_0,t_1)$. Then the fixed interval variation associated with those data exists and it's given by
+\[ v_\theta=l_\theta*\bigg(f(\trajWinCondMath{\tau_\theta},\omega_\theta) - f(\trajWinCondMath{\tau_\theta},\mu(\tau_\theta) )  \bigg). \]
 
 \subparagraph[4.10]{Variations and cones} The real importance of this theorem is not only in the fact that it is (almost) always possible to individuate the infinitesimal variation, but also in the fact that those variations form a cone, which is, if one vector represents a variation, then all of the half-line (originating from $0\in\R^n$) given by that vector is made up of fixed interval variations. Formally said, \\\\
 
-\grass{Proposition:} Let \controlSystem be a control system, $x_0\in\chi$ be an initial condition for eq. \ref{e1.1}, $\tzto\subset\R$ a time interval, $\mu\in\admContr{x_0,t_0,\tzto}$. Let then \fivData be a fixed interval needle variation data, with $\tau_\theta\in Leb(\mu,x_0,t_0,t_1)$.\\
+\grass{Theorem:} Let \controlSystem\space be a control system, $x_0\in\chi$ be an initial condition for eq. \eqref{e1.1}, $\tzto\subset\R$ a time interval, $\mu\in\admContr{x_0,t_0,\tzto}$. Let then \fivData\space be a fixed interval needle variation data, with $\tau_\theta\in Leb(\mu,x_0,t_0,t_1)$.\\
 Then, the set of fixed interval needle variation associated with the data $\theta$ form a cone.\\\\
-\grass{Proof:} It's just enough to say that, if $v_\theta$ is the variation associated with the data \fivData, then, taken a $k\in\R_{\geq0}, kv_\theta$ is the variation associated with the data $k\theta=(\tau_\theta,k*l_\theta,\omega_\theta)$. Using obvious notation, one could then say that $v_{k\theta}=kv_\theta$.\\\\
-It is interesting to note that, in the triple representing the data, only the \textit{"lenght of the disturbance"} gets multiplied by the scalar. This means, that, referring to \ref{fig-needle-variation}, the final control is practically the same. In fact, the actual length of the horizontal step in the figure doesn't really matter, since s tends to zero, and the actual disturbance gets reduced to a (Lebesgue-neglettable) single point in time. \\
-The only effect one may obtain is that, given a certain trajectory, the trajectories associated with varied control depart from the undisturbed one at a higher rate with growing s (at least, as long as s is small enough so that one can linearize the effect of control variation), but in the same direction. This is the same exact meaning of the length of the dotted arrows in \ref{fig-variations}.
-
+\grass{Proof:} It's just enough to say that, if $v_\theta$ is the variation associated with the data \fivData, then, taken a $k\in\R_{\geq0}, kv_\theta$ is the variation associated with the data $k\theta=(\tau_\theta,kl_\theta,\omega_\theta)$. Using obvious notation, one could then say that $v_{k\theta}=kv_\theta$.\\\\
+It is interesting to note that, in the triple representing the data, only the "lenght of the disturbance" gets multiplied by the scalar. This means, that, referring to Figure \ref{fig-needle-variation}, only the length of the horizontal step in the figure changes. But in the limit process the disturbance is reduced to a 0-measure point, regardless of its underlying $l_\theta$.\\
+The only effect one may obtain is that, given a certain trajectory, the trajectories associated with varied control depart from the undisturbed one at a higher rate with growing s (at least, as long as s is small enough so that one can linearize the effect of control variation), but in the same direction.
 
 \subsection{Multi-needle variations}
 The concept behind multi needle variations is that they are made of single needle variations which sum up(linearly, as can be see in the relative theorem). We need this object basically because although single needle variations do form a cone, this is not generally convex. Convexity is needed in the proof, to find a hyperplane that separates the half space containing cone from another one. This is because a variational cone originating from the boundary of the reachable set cone will point toward the "less optimal", this half space is the non optimal one.\\\\
@@ -49,69 +48,69 @@ So now let \controlSystem be a control system, $x_0\in\chi$ be an initial condit
 	
 	\item the \grass{control variation} of the control $\mu$ associated with the relative data $\Theta$ as the map $\mu_\Theta:J\times\tzto\fd U$ such that
 	\[\mu_\Theta = \left\{ \begin{array}{ll}
-	\omega_j & \mbox{if $t\in[\tau_\Theta-s*l_\Theta,\tau_\Theta],j=1,..,k$}\\
+	\omega_j & \mbox{if $t\in[\tau_\Theta-sl_\Theta,\tau_\Theta],j=1,..,k$}\\
 	\mut & \mbox{otherwise}.\end{array}
 	\right.	\]
 	Where $J=[0,s_0]$ is an interval sufficiently small so that $\mu_\Theta(s,t)$ is an admissible control for each $s\in J$.
 	
 	\item the \grass{fixed interval multi-needle variation} associated with the control $\mu$, the trajectory \trajWinCond{\cdot}, the time $t\in\tzto$ taken such that $t>\underset{j}{\max}(\tau_j)$ and the variation data $\Theta$ as a vector of $\R^n$ (a vectorial function of time actually) defined like this: 
-	\[v_\theta(t) = \frac{d}{ds}\bigg|_{s=0} \xi(\mu_\Theta(s,\cdot),x_0,t_0,t),\] when such derivative exists
+	\[v_\theta(t) = \frac{d}{ds}\bigg|_{s=0} \xi(\mu_\Theta(s,\cdot),x_0,t_0,t),\] when such derivative exists.
 }
 
-\paragraph[4.12]{Theorem: existence of multi-needle fixed interval variations}\mbox{}\\
-Let \controlSystem be a control system, $x_0\in\chi$ be an initial condition for eq. \ref{e1.1}, $\tzto\subset\R$ a time interval, $\mu\in\admContr{x_0,t_0,\tzto}$. Then, let $\Theta=\{\theta_1,..,\theta_k\}$ be a multi needle variation data ("fixed interval" will from now on be omitted, since this case is the only one treated in this essay),$\Theta$ such that the times $\tau_j\in Leb(\mu,x_0,t_0,t)$, are all distinct, and also $t>\underset{j}{\max}(\tau_j)$.\\
+\paragraph[4.12]{Existence of multi-needle fixed interval variations}\mbox{}\\
+\grass{Theorem:} Let \controlSystem\space be a control system, $x_0\in\chi$ be an initial condition for eq. \eqref{e1.1}, $\tzto\subset\R$ a time interval, $\mu\in\admContr{x_0,t_0,\tzto}$. Then, let $\Theta=\{\theta_1,..,\theta_k\}$ be a multi needle variation data ("fixed interval" will from now on be omitted, since this case is the only one treated in this essay). $\Theta$ is such that the times $\tau_j\in Leb(\mu,x_0,t_0,t)$, are all distinct, and also $t>\underset{j}{\max}(\tau_j)$.\\
 Then, the multi needle variation is given by
 \[v_\Theta(t)=\sum_{j=1}^{k}\fondMatMath{\tau_j}{t}\cdot v_{\theta_j} \]
-As one can see, the variations caused by the various single needle variations first are let evolve in time from the instant in which they are applied to the "current" one, $t$, and then their effects sum up linearly.\\\\
+As one can see, the variations caused by the various single needle variations are first evolved in time from the instant in which they are applied to the "current" one, $t$, and then their effects sum up linearly.\\\\
 Taking this into account, and also considering the fact that $v_{k\theta_j}=kv_{\theta_j}$ for whatever $k\geq0$ real, and remembering that the matrix-vector product is linear with respect to scalar multiplication, one can easily get the following
-\subparagraph[4.13]{Corollary: coned convex combination of multi needle variations} With slight abuse of notation, given the usual control system, admissible control, initial condition, interval, given a multi needle variation data with its distinct times being Lebesgue points for $f$, and with a $t>\underset{j}{\max}(\tau_j)$, given a set $\lambda=\{\lambda_1,..,\lambda_k\}\subset\R_{\geq0}$ then
+\subparagraph[4.13]{Corollary: coned convex combination of multi needle variations} With slight abuse of notation, consider the usual control system, admissible control, initial condition, interval. Given a multi needle variation data with its distinct times being Lebesgue points for $f$, and with a $t>\underset{j}{\max}(\tau_j)$, given a set $\lambda=\{\lambda_1,..,\lambda_k\}\subset\R_{\geq0}$ then
 \[ v_{\lambda\Theta(t)}=\sum_{j=1}^{k}\lambda_j\fondMatMath{\tau_j}{t}\cdot v_{\theta_j} \]
 
 
 \subsection{Cones and reachable set}
-The proof of maximum principle will deal with the \textit{"approximation of reachable set using cones"}, which is to say that at its boundary the reachable set will be confused, at least in a neighborhood of a frontier point,  with a (variational) cone. The variations used will be both single and multi needle. We're going to see that the two are, in some sense, equal.\\ We just need two more definitions.\\The first one is going to be the 
+The proof of maximum principle will make use of cones of variations and relate them to the reachable set. The variations used will be both single and multi needle. We're going to see that the two are, in a sense, equal.\\ We just need two more definitions.\\ 
 
-\paragraph{Tangent cone} As usual, let \controlSystem be a control system, $x_0\in\chi$ be an initial condition for eq. \ref{e1.1}, $\tzto\subset\R$ a time interval, $\mu\in\admContr{x_0,t_0,\tzto}$. We then take $t\in\tzto$. Then we denote by \fixIntTanCone{t} the coned convex hull of the following set: 
+\paragraph{Tangent cone} As usual, let \controlSystem\space be a control system, $x_0\in\chi$ be an initial condition for eq. \eqref{e1.1}, $\tzto\subset\R$ a time interval, $\mu\in\admContr{x_0,t_0,\tzto}$. We then take $t\in\tzto$. Then we denote with \fixIntTanCone{t} the coned convex hull of the following set: 
 \[ \cup \{ \fondMatMath{\tau}{t}\cdot v|\tau\in Leb(\mu,x_0,t_0,t)\text{where $v$ is a single needle variation at time }\tau. \} \]
-In simple words, $K$ is built in the following way: by taking every single needle variation at every possible time preceding the current one(almost: they still have to be Lebesgue points), making the disturbance evolve from its origin to the current time trough matrix $\Phi$ and then by taking the coned convex hull of the set union of all those vectors. \\
+This cone will be called \grass{tangent cone}.\\
+In simple words, $K$ is built by taking every single needle variation at every possible time preceding the current one(almost: they still have to be Lebesgue points), making the disturbance evolve from its origin to the current time trough matrix $\Phi$ and then by taking the coned convex hull of the set union of all those vectors. \\
 We now define the analogue to \fixIntTanCone{t} but for multi needle variations.
 
-\paragraph{Tangent r-simplex cone(and relative data)} As usual, let \controlSystem be a control system, $x_0\in\chi$ be an initial condition for eq. \ref{e1.1}, $\tzto\subset\R$ a time interval, $\mu\in\admContr{x_0,t_0,\tzto}$. We then take $t\in\tzto$. We then define 
+\paragraph{Tangent r-simplex cone(and relative data)} As usual, let \controlSystem\space be a control system, $x_0\in\chi$ be an initial condition for eq. \eqref{e1.1}, $\tzto\subset\R$ a time interval, $\mu\in\admContr{x_0,t_0,\tzto}$. We then take $t\in\tzto$. We have the following definitions: 
 \lista{
-	\item the \grass{tangent r-simplex cone data} as a collection $\{\Theta_1,...,\Theta_r\}$ of multi needle variations. \\
-	By using this notation:$\Theta_i=\{\theta_ij\};i=1,..,r;j=1,..,k_i$, we require that the times $\tau_ij$ are all distincts, are all Lebesgue points-
+	\item \grass{tangent r-simplex cone data} as a collection $\{\Theta_1,...,\Theta_r\}$ of multi needle variations. \\
+	We use this notation:$\Theta_i=\{\theta_ij\};i=1,..,r;j=1,..,k_i$,and require that the times $\tau_ij$ are all distinct and that they are all Lebesgue points.
 	
 	\item given the multi needle variations $v_{\Theta_i}$associated with the relativa r-simplex cone data, the coned convex hull of $v_{\Theta_i}$  is actually an r-simplex cone and defined as the \grass{tangent r-simplex cone}. 
 }
 Of course, when not explicitly said, the previous definitions where all relative to the fixed-interval case.
 
-\paragraph[lemma 5.5]{Theorem: various forms for the tangent cone}
-The following sets are actually the same set: \lista{
-	\item \fixIntTanCone{t}
-	\item given r=$dim(\fixIntTanConeMath{t})$, the closure of the set formed by the union of all the possible tangent r-simplex cones
-	\item the closure of the set formed by the union of all the sets $\{\fondMatMath{\tau}{t}\cdot\fixIntTanConeMath{\tau}| \tau\in Leb(\mu,x_0,t_0,t)\}$
+\paragraph[lemma 5.5]{Various forms for the tangent cone}
+\grass{Theorem:} The following sets are actually the same set: \lista{
+	\item \fixIntTanCone{t}.
+	\item given r=$dim(\fixIntTanConeMath{t})$, the closure of the set formed by the union of all the possible tangent r-simplex cones.
+	\item the closure of the set formed by the union of all the sets $\{\fondMatMath{\tau}{t}\cdot\fixIntTanConeMath{\tau}| \tau\in Leb(\mu,x_0,t_0,t)\}$.
 }
 Despite the difficulty of interpretation, this theorem tells us that in the end it does not matter if variations to the control are obtained through single needle or multi needle variations. The equivalence of the first one and the third one is easier to justify and understand, using the property of concatenation of $\Phi$ for which $\fondMatMath{a}{b}\cdot\fondMatMath{b}{c}=\fondMatMath{a}{c}$.
 
 
 \subsection{Significative theorems}
-\paragraph[5.10]{Theorem: points in the tangent cones are "interior" to the reachable set}
-Given the usual control system, initial condition and $\tzto$, and given a tangent cone \fixIntTanCone{t}, for a $t\in\tzto$, if a $v_0$ exists such that it is in the internal part of $K$,then\\
-There exists: a cone $A\subset int(K)$ and an $r>0$ such that \lista{
-\item $v_0\in int(A)$
+\paragraph[5.10]{points in the tangent cones are "interior" to the reachable set}
+\grass{Theorem:} Given the usual control system, initial condition and $\tzto$, and given a tangent cone \fixIntTanCone{t}, for a $t\in\tzto$, if a $v_0$ exists such that it is in the internal part of $K$,then there exists a cone $A\subset int(K)$ and an $r>0$ such that \lista{
+\item $v_0\in int(A)$,
 \item the intersection B between A and the ball of center \trajWinCond{t} (which is the "current" state of the system) and radius r is contained in the reachable set $B\in$\reachSet{t}.}
 
-Basically what this theorem says is not properly that the tangent cone points towards the interior of the reachable set. Although this is in a certain sense true, his theorem says something a slightly less powerful. The first step is to understand that, since $\lambda v_0$ is in the internal part of the cone for every $\lambda>0$, then one can choose a variational vector with the same direction of $v_0$ such that by moving the trajectory in that direction (which is obtainable by applying the corresponding control variation) one still remains in the reachable set. 
+What this theorem says is that basically the tangent cone points "towards", or better to say, "in" the reachable set. 
 
 \paragraph[5.12-5.14]{Maximum Hamiltonians and tangent cones}
-In the statement of maximum principle tangent cones do not appear, but maximum Hamiltonian do. Actually, one Could just be satisfied with the Hamiltonian part, in the sense that, once the adjoint response is found (not an easy task, but the orthogonality with the smooth set \so and \sz can help), the only remaining part is to find a control that maximizes the Hamiltonian. Those and only those controls are candidates for optimality. 
+In the statement of maximum principle tangent cones do not appear, but maximum Hamiltonian do. Actually, one Could just be satisfied with the Hamiltonian part, in the sense that, once the adjoint response is found (not an easy task, but the orthogonality with the smooth set \so\space and \sz\space can help), the only remaining part is to find a control that maximizes the Hamiltonian. Those and only those controls are candidates for optimality. 
 
 Nevertheless, it is interesting to see the connections between tangent cones and Hamiltonians, and to have a look at the (geometrical) significance of the following theorems.\\
 The first one is going to be about the binding between maximization of Hamiltonian and the existance of a separating hyperplane between the costate and, in a sense, possible "controls". This, point to point in time. 
 
 \subparagraph[5.12]{Theorem:}Given a control system \controlSystem, a costate $p$ and a control $\overline{u}$, then\\
 $H_\Sigma(x,p,\overline{u})=H_{\Sigma}^{max}(x,p)$ if and only if 
-\[ \text{for every }v\in\{f(x,u)-f(x,\overline{u})|u\in U \}\text{it is valid that }\langle p,v \rangle <0 \]
+\[ \text{for every }v\in\{f(x,u)-f(x,\overline{u})|u\in U \}\text{it is valid that }\langle p,v \rangle\le0 \]
 \grass{Proof:} 
 \begin{gather*}
 	H_\Sigma(x,p,\overline{u})=H_{\Sigma}^{max}(x,p) \iff\\
@@ -120,22 +119,19 @@ $H_\Sigma(x,p,\overline{u})=H_{\Sigma}^{max}(x,p)$ if and only if
 	\langle p,f(x,u)-f(x,\overline{u}) \le 0\rangle \iff\\
 	\langle p,v \rangle \leq 0
 \end{gather*}
-for v defined as before. \\
+for $v$ defined as before. \\
 
 
 \paragraph[5.13]{Hamiltonians and adjoint response}
-There is now another theorem, regarding the connection between adjoint response and Hamiltonian. What this theorem says is that one can find a suitable costate $p$, with which he may start to try to maximize the Hamiltonian, by simply taking the adjoint response coming from eq. \ref{adjoint-equation}, provided a suitable initial condition for this equation is found.  So
-\subparagraph[lemma 5.13]{Theorem:} Given the usual control system, initial condition, time interval, and supposing that for a $\tau\in\tzto$ there exists a vector $\overline{\lambda}\in\R^n$ ad a cone A that contains $\fixIntTanConeMath{\tau}\subset A$ such that\\
-for each $v\in A \implies \langle \overline{\lambda},v\rangle$, then \\
-by taking the adjoint response with initial condition for equation \ref{adjoint-equation} that $\lambda(\tau)=\overline{\lambda}$ then it is true that, for every $t\in Leb(\mu,x_0,t_0,\tau)$
-\[ H_\Sigma(\trajWinCondMath{t},\lambdat,\mut)=H_\Sigma^{max}(\trajWinCondMath{t},\lambdat) \]
-
-As already anticipated, the first of the two preceding lemmas tells us that, given and certain $p$ and a certain state of the system, at a certain time $t$, the control that maximizes the Hamiltonian is the one that, if we refer single needle variations to that base control, the variational cone \fixIntTanCone{t} possesses a support hyperplane and that is individuated as the one being perpendicular to $p$. This tells us two things: first, that trajectories can only be moved "one way", by varying the control. This is also trivial because if a control maximizes the Hamiltonian, than by varying it, there is no other option than to get a lower valued of that Hamiltonian. The second thing is that, generally, optimal controls will be found on the boundary of the set of possible control (at a given state and time).\\
-The second theorem is more related to the properties of the adjoint equation. First, one has to acknowledge that $v$ is a needle variation (with data $(t,1,w)$). Secondly,  the system lies at a certain state at time $\tau$. The system has been steered from the initial conditions to there by the control $\mut$. If at $\tau$ the variational tangent cone \textit{(still) }possesses a supporting hyperplane, then we are able to find a function $p:[t_0,\tau]\fd\R^n$ such that it maximizes the Hamiltonian. This function is, because of the properties of the adjoint and variational equations and the fundamental matrix, the adjoint response. But besides having found the costate that maximizes the Hamiltonian at any given moment, this theorem tells us also something about the control being, if not optimal, at least "extremal" in some sense. At least one can conclude, via the first lemma (all the implications in the demonstration are double sided) that the variational tangent cone \fixIntTanCone{a} possessed a supporting hyperplane $\forall a\in[t_0,\tau]$.\\
-As a last remark: the last of those two theorems tells us only something about the past, which is, from the initial instant to $\tau$. It does not give us ways to predict what the optimal control for the instants after $\tau$.\\
-
-\paragraph[TODO]{TODO: DECIDE WHETHER TO LEAVE THIS }
-The following theorem tells us that, if for a given control and at a given time $\tau$ there exists a supporting hyperplane for \fixIntTanCone{\tau} then the corresponding Hamiltonian is zero. Which is, the supporting hyperplane for the cone "touches" the set of possible $f(x,u)$. This is evdent by referring to figure \ref{fig-5.2}. 
+There is now another theorem, regarding the connection between adjoint response and Hamiltonian. What this theorem says is that one can find a suitable costate $p$, which maximizes the Hamiltonian up to the present moment.\\
+\grass{Theorem:} Given the usual control system, initial condition, time interval, and supposing that for a $\tau\in\tzto$ there exists a vector $\overline{\lambda}\in\R^n$ ad a cone A that contains $\fixIntTanConeMath{\tau}\subset A$ such that for each $v\in A \implies \langle \overline{\lambda},v\rangle\leq0$, then by taking the adjoint response with initial condition for equation \eqref{adjoint-equation} that $\lambda(\tau)=\overline{\lambda}$ then it is true that, for every $t\in Leb(\mu,x_0,t_0,\tau)$
+\[ H_\Sigma(\trajWinCondMath{t},\lambdat,\mut)=H_\Sigma^{max}(\trajWinCondMath{t},\lambdat). \]
+\\
+The idea behind these last two theorems is that  a control is optimal and thus maximizes the Hamiltonian, at any given time, if and only if there exists a supporting hyperplane for the cone $K$ (at that time).
+The second theorem tells us that if, at any given time, there exists a supporting hyperplane for the cone, then we can find a function $p:[t_0,\tau]\fd\R^n$ such that it maximizes the Hamiltonian at almost every preceding instant.\\
+The bound between the two preceding theorems (the first one doesn't mention the tangent cone!) is the acknowledgment that every variation $v$ defined  as in the first theorem is actually a needle variation (with data $(t,1,w)$).
+%\\\\\\ The second theorem is more related to the properties of the adjoint equation. First, one has to acknowledge that $v$ is a needle variation (with data $(t,1,w)$). Secondly,  the system lies at a certain state at time $\tau$. The system has been steered from the initial conditions to there by the control $\mut$. If at $\tau$ the variational tangent cone \textit{(still) }possesses a supporting hyperplane, then we are able to find a function $p:[t_0,\tau]\fd\R^n$ such that it maximizes the Hamiltonian. This function is, because of the properties of the adjoint and variational equations and the fundamental matrix, the adjoint response. But besides having found the costate that maximizes the Hamiltonian at any given moment, this theorem tells us also something about the control being, if not optimal, at least "extremal" in some sense. At least one can conclude, via the first lemma (all the implications in the demonstration are double sided) that the variational tangent cone \fixIntTanCone{a} possessed a supporting hyperplane $\forall a\in[t_0,\tau]$.\\
+As a last remark: the second theorem tells us only something about the past instants up to the present one. It does not give us ways to predict what the optimal control for the instants after $\tau$.\\
 
 \begin{figure}[h!]
 	\includegraphics[width=\linewidth]{imgs/512-514.png}
@@ -143,16 +139,11 @@ The following theorem tells us that, if for a given control and at a given time 
 	\label{fig-5.2}
 \end{figure}
 
-So now, 
-\subparagraph[5.14]{Theorem:} Demonstration of theorem 5-14 is not that clear in the book, so for now, it is skipped.
-
-
 \subsection{Controlled trajectories and boundary of reachable set}
 The following very important theorem tell us two very important things. If, in the end (at $t_1$) the trajectory lies on the boundary of the reachable set, then first, there exists an adjoint response that maximizes the Hamiltonian for any instant in $\tzto$ (or, better to say, in the Lebesgue points for $f$ in that interval) and thus, secondly, the control is optimal, since it maximizes the Hamiltonian. \\
-Formally said,
 
-\subparagraph[5.16]{Theorem:} Given the usual control system, initial condition and time interval, given a control $\mu_*\in\admContr{\tzto}$, and given $\xi(\mu_*,x_0,t_0,t_1)$ (abbreviate $\xi(\mu_*,x_0,t_0,\cdot$ simply with $\xi_*$ ),\\
-if $\xi_*(t_1) \in bd(\reachSetMath{t_1})$ then \lista{
+
+\subparagraph[5.16]{Theorem:} Given the usual control system, initial condition and time interval, given a control $\mu_*\in\admContr{\tzto}$, and given $\xi(\mu_*,x_0,t_0,t_1)$ (abbreviate $\xi(\mu_*,x_0,t_0,\cdot)$ simply with $\xi_*$ ),if $\xi_*(t_1) \in bd(\reachSetMath{t_1})$ then \lista{
 	\item there exists an adjoint response $\lambda_*:\tzto\fd\R^n$ for $\Sigma$ for the controlled trajectory $(\xi_*,\mu_*)$, 
 	\item $H_\Sigma(\xi(\mu_*,x_0,t_0,t),\lambda_*(t),\mu_*(t))=H_\Sigma^{max}(\xi(\mu_*,x_0,t_0,t),\lambda_*(t))$ for (almost) every $t\in\tzto$
 }
@@ -162,7 +153,7 @@ We now claim that $v_0\notin int(K(\mu_*,x_0,t_0,t_1))$:\\
 	 \mbox{}
 \end{minipage}
 \begin{minipage}{0.8\linewidth}
-	 Supposing that $v_0$ lies in the internal part of the cone, then there exists a suffiecntly large $N$ such that, for $j>N$, every $v_j$ lies in the internal of the cone. Using the first theorem from the section "significative theorems" implies that for a certain $N$ also $x_{j>N}\in int(K(\mu_*,x_0,t_0,t_1))$. Indeed, a whole ball with center $\xi_*(t1)+v_j$ and radius $r$ is contained in the cone. In order to prove the last claim, the center of the ball is moved along the direction of $v_j$ until it coincides con $x_j$. One could (and should, in the case that $||x_j-\xi_*(t_1)||<1$) actually also re-scale the radius, and the re-scaled ball still lies in the cone. 
+	 Supposing that $v_0$ lies in the internal part of the cone, then there exists a suffiecntly large $N$ such that, for $j>N$, every $v_j$ lies in the internal of the cone. The first theorem from the section "significative theorems" implies that for a certain $N$ also $x_{j>N}\in int(K(\mu_*,x_0,t_0,t_1))$. Indeed, a whole ball with center $\xi_*(t1)+v_j$ and radius $r$ is contained in the cone. In order to prove the last claim, the center of the ball is moved along the direction of $v_j$ until it coincides con $x_j$. One could (and should, in the case that $||x_j-\xi_*(t_1)||<1$) actually also re-scale the radius, and the re-scaled ball still lies in the cone. 
 \end{minipage}\\
 Given this, a topological lemma states that there exists a separating hyperplane $P(t_1)$ such that vector $v_0$ is contained in a half-space and the cone is contained in the other one.\\
 Now take a the vector called $\lambda_*(t_1)$ orthogonal to $P(t_1)$ lying in the half space not containing the cone, and thus \[\langle \lambda_*(t_1),v\rangle\text{      }v\in K(\mu_*,x_0,t_0,t_1).\]

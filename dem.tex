@@ -61,57 +61,54 @@ Let \controlSystem\space be a control system, $x_0\in\chi$ be an initial conditi
 }
 are equivalent. 
 
-\subparagraph{The foundamental matrix $\Phi$}We define an $n\times n$ linear map $\Phi(t):\R^n\fd\R^n$ as a map such that $\Phi(t)\cdot w=\Dderarg{2}$\trajWinCond{t}$\cdot w$.\\
-By differentiation one can see that $\Phi(t)$ satisfies this matrix differential initial value problem:
+\subparagraph{The foundamental matrix $\Phi$}We temporarily define an $n\times n$ linear map $\Phi(t):\R^n\fd\R^n$ as a map such that $\Phi(t)\cdot w=\Dderarg{2}$\trajWinCond{t}$\cdot w$.\\
+By differentiation one can see that $\Phi(t)$ satisfies this matrix differential initial value problem
 \begin{gather*}
-\dot{\Phi}(t)=\Dderarg{1}f(\trajWinCondMath{t},\mut)\circ\Phi(t);\text{   	   }\Phi(t_0)=Id_{n\times n} 
+\dot{\Phi}(t)=\Dderarg{1}f(\trajWinCondMath{t},\mut)\circ\Phi(t);\text{   	   }\Phi(t_0)=Id_{n\times n}.
 \end{gather*}
 
-We thus define $\boldsymbol{\fondMatMath{\tau}{t}} $ as the solution to the matrix initial value problem 
+We can re-define, for wider generality, $\fondMatMath{\tau}{t}$ by the solution to the matrix initial value problem 
 \begin{equation*}
-	\dot{\Phi}(t)=\Dderarg{1}f(\trajWinCondMath{t},\mut)\circ;\text{   	   }\Phi(\tau)=Id_{n\times n} ...
+	\dot{\Phi}(t)=\Dderarg{1}f(\trajWinCondMath{t},\mut)\circ\Phi(t);\text{   	   }\Phi(\tau)=Id_{n\times n},
 \end{equation*}
-Where of course $t,\tau\in\tzto$.\\
+where of course $t,\tau\in\tzto$.\\
 
-The importance of this matrix resides in the fact that, being the variational equation \ref{variational-equation} a linear one and being $\Phi$ the foundamental matrix of the equation, it is true that, for a variation $v(t)$ (which is also a solution to the variational equation, because of the theorem), $v(t)=\fondMatMath{t_0}{t}\cdot v(t_0)$\\
-$\Phi$ also has some properties, about the composition of the 
-
+The importance of this matrix resides in the fact that, being the variational equation \eqref{variational-equation} a linear one and being $\Phi$ the fundamental matrix of the equation, it is true that, for a variation $v(t)$ (which is also a solution to the variational equation), $v(t)=\fondMatMath{t_0}{t}\cdot v(t_0)$.\\
 
 
 \subsection{Properties of adjoint repsonse }
-What this theorem says is that seeing the adjoint repsonse as a solution of the adjoint equation \ref{adjoint-equation} and of the adjoint equation defined with the hamiltonians \ref{adjoint-hamiltonian} is the same exact thing.
-
+What this theorem says is that seeing \eqref{adjoint-equation} and \eqref{adjoint-hamiltonian} are equivalent.
 
 \paragraph[prop 4.4]{Hamilton's and adjoint equation}\mbox{}\\
-\grass{Theorem}: given a control system \controlSystem,  an admissible control $\mu:I\fd U$,and two maps $\xi:I\fd\chi;\lambda:I\fd\R^n$, those two statements are equivalent: \lista{
-	\item the curve $t\fd(\statot,\lambdat)$ satisfies the adjoint equation \ref{adjoint-equation}
-	\item the curve $t\fd(\statot,\lambdat)$ satisfies the differential equation \ref{adjoint-hamiltonian} recalled here:
+\grass{Theorem}: given a control system \controlSystem, an admissible control $\mu:I\fd U$, and two maps $\xi:I\fd\chi;$\space$\lambda:I\fd\R^n$, those two statements are equivalent: \lista{
+	\item the curve $t\fd(\statot,\lambdat)$ satisfies the adjoint equation \eqref{adjoint-equation},
+	\item the curve $t\fd(\statot,\lambdat)$ satisfies the differential equation \eqref{adjoint-hamiltonian} recalled here:
 		\begin{gather*}
-				\statotdot=\boldsymbol{D}_2H_\Sigma(\statot,\lambdat,\mut)\\
-				\lambdat=-\boldsymbol{D}_1H_\Sigma(\statot,\lambdat,\mut)
+				\statotdot=D_2H_\Sigma(\statot,\lambdat,\mut)\\
+				\lambdat=-D_1H_\Sigma(\statot,\lambdat,\mut)
 		\end{gather*}
 }
-This theorem is demonstrated simpy by differentiating the given quantities, and by using the properties of dot product. 
+This theorem is demonstrated simply by differentiating the given quantities, and by using the properties of dot product. 
 
 
 \paragraph[prop 4.5]{Adjoint response and variations}\mbox{}\\
-\grass{Theorem} Let \controlSystem be a control system, $x_0\in\chi$ be an initial condition for eq. \ref{e1.1}, $\tzto\subset\R$ a time interval, $\mu\in\admContr{x_0,t_0,\tzto}$. If $v$ and $\lambda$ are two maps $v,\lambda:\tzto\fd\R^n$ that satisfy the variational and adjoint equation respectively (toghether with the trajectory $t\fd$\trajWinCond{t}), then the standard scalar product between those two vectors is constant with time, which is
+\grass{Theorem:} Let \controlSystem\space be a control system, $x_0\in\chi$ be an initial condition for eq. \eqref{e1.1}, $\tzto\subset\R$ a time interval, $\mu\in\admContr{x_0,t_0,\tzto}$. If $v$ and $\lambda$ are two maps $v,\lambda:\tzto\fd\R^n$ that satisfy the variational and adjoint equation respectively (toghether with the trajectory $t\fd$\trajWinCond{t}), then 
 \begin{equation*}
 	\langle\lambdat,v(t)\rangle=\langle\lambda(t_0),v(t_0)\rangle
 \end{equation*}
-Proof:
+for all $t\in\tzto$.\\
+\grass{Proof:}
 \begin{gather*}
 	\frac{d}{dt}\langle\lambdat,v(t)\rangle=\\
-	=\langle\lambdatdot,v(t)\rangle+	\langle\lambdat,\dot{v}(t)\rangle=\\
-	=-\langle\Dderarg{1}f^T(\controlledTrajMath)\cdot\lambdat,v(t)\rangle +\langle\lambdat,\Dderarg{1}f^T(\controlledTrajMath)\cdot v(t)\rangle=\\
-	=0
+	\langle\lambdatdot,v(t)\rangle+	\langle\lambdat,\dot{v}(t)\rangle=\\
+	-\langle\Dderarg{1}f^T(\controlledTrajMath)\cdot\lambdat,v(t)\rangle +\langle\lambdat,\Dderarg{1}f^T(\controlledTrajMath)\cdot v(t)\rangle=0.
 \end{gather*}
 
-\subparagraph[4.6]{A corollary} An important consequence of this fact is that if the two vectors $v,\lambda$ are orthogonal at the initial moment, they remain orthogonal throughout the whole evolution of the system. 
+\subparagraph[4.6]{A corollary}An important consequence of this fact is that if the two vectors $v,\lambda$ are orthogonal at the initial moment, they remain orthogonal throughout the whole evolution of the system. 
 
 
-\paragraph[prop 4.7]{Foundamental matrix for the adjoint response}
-\grass{Theorem} Let \controlSystem be a control system, $x_0\in\chi$ be an initial condition for eq. \ref{e1.1}, $\tzto\subset\R$ a time interval, $\mu\in\admContr{x_0,t_0,\tzto}$, and let $\tau\in\tzto$. Then the solution of the initial value problem 
+\paragraph[prop 4.7]{Foundamental matrix for the adjoint response.}\mbox{}\\
+\grass{Theorem:} Let \controlSystem\space be a control system, $x_0\in\chi$ be an initial condition for eq. \eqref{e1.1}, $\tzto\subset\R$ a time interval, $\mu\in\admContr{x_0,t_0,\tzto}$, and let $\tau\in\tzto$. Then the solution of the initial value problem 
 \gatherNo{\lambdatdot=-\Dderarg{1}f^T(\statot,\mut)\cdot v(t),\text{      	}\lambda(\tau)=\lambda_\tau }
 is the following one:
 \gatherNo{t\fd\lambdat=\fondMatMath{t}{\tau}^T\cdot\lambda_\tau  }
