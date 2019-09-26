@@ -1,11 +1,11 @@
 \subsection{Control System} A \grass{control system} is a triple $\Sigma=(\chi,f,U) $, where 
 \begin{enumerate}
 	\item $\chi$, representing the states of the system, is an open subset of $\R^n$,
-	\item $U$, representing the space of possible (\textit{instantaneous} controls, is an open subset of $\R^m,U\subset\R^m$
+	\item $U$, representing the space of possible (\textit{instantaneous}) controls, is an open subset of $\R^m,U\subset\R^m$,
 	\item $f: \chi \times cl(U) \rightarrow f(x,u)$ is a function which dictates the law with which the system evolves. Moreover, $f$
 	\begin{enumerate}
-		\item is continuous
-		\item the map $x \rightarrow f(x,u)$ is of class $C^1$ for each $u \in cl(U)$
+		\item is continuous and
+		\item the map $x \rightarrow f(x,u)$ is of class $C^1$ for each $u \in cl(U)$.
 	\end{enumerate}
 \end{enumerate}
 
@@ -14,24 +14,24 @@ Since $f$ is function of the current state of the system and of the current cont
 where obviously, for each $t,\statot\in\chi$ is the "current" (at time $t$) state of the system, and $\mu(t)\in U$ is the current (at time $t$) control, dictated by the control law $\mu(t)$.
 
 
-\subsection{Control and Trajectories}
+\subsection{Control and trajectories}
 We want some limitations on the function $t\rightarrow\mut$ because, starting from a certain state we want the control to originate through \eqref{e1.1} trajectories that, at least, "make sense". So, given a control system \controlSystemSpaced we define
 \begin{itemize}
 	\item An \grass{admissible control} as a \textit{measurable map} $\mu:I\rightarrow U$ where $I$ is a (time) interval $I\subset\R$, and such that $t\fd f(x,\mut )$ is locally integrable for each $x\in\chi$.
-	\item we denote the set of admissible controls defined on the time interval $I$ by $\admContr{I}$	.
+	\item the set of admissible controls defined on the time interval $I$ as $\admContr{I}$	.
 	%https://www.overleaf.com/learn/latex/Mathematical_fonts for reference
 	\item A \grass{controlled trajectory} as a pair $(\xi,\mu)$ where, for some time interval $I$
 		\lista{
 			\item $\mu\in\admContr{I}$ is a function expressing the control through which the system is driven in the time interval, and is an admissible control. This map will be simply called the \grass{control}.
-			\item $\xi:I\fd \chi$ is the map linking the times  to their corresponding state, which follows the law \eqref{e1.1}. This map will be called the \grass{trajectory}.
+			\item $\xi:I\fd \chi$ is the map linking the times  to their corresponding state, which follows law \eqref{e1.1}. This map will be called the \grass{trajectory}.
 		}
-	\item a \grass{controlled arc} is a controlled trajectory defined on a compact time interval.
+	\item a \grass{controlled arc} as a controlled trajectory defined on a compact time interval.
 \end{itemize}
 The set of the controlled trajectories for a given control system \controlSystemSpaced is denoted by Ctraj($\Sigma$), the set of the controlled arcs for the control system is denoted by Carc($\Sigma$).
 
 
 \subsection{Lagrangian, costs and optimal control problem(s)}
-Since we want to optimize a cost, we first have to define an objective function which has to be minimized. This will be the integral of another function called Lagrangian. So, given a control system \controlSystem
+Since we want to optimize a cost, we first have to define an objective function which has to be minimized. This will be the integral of another function called Lagrangian. So, given a control system \controlSystem,
 \begin{itemize}
 	\item A \grass{Lagrangian} for $\Sigma\text{ is a function }L:\chi\times cl(U)\fd\R$ such that
 		\lista{
@@ -39,7 +39,7 @@ Since we want to optimize a cost, we first have to define an objective function 
 			\item the function $x\fd L(x,u)$ is of class $C^1$ for each $u\in cl(U)$.
 		}
 	
-	\item given a Lagrangian $L$, we say that a controlled trajectory \controlledTrajSpaced with relative time interval \I is \grass{L-acceptable} if the function $t\fd L(\statot,\mut)$ is integrable.
+	\item given a Lagrangian $L$, we say that a controlled trajectory \controlledTrajSpaced with relative time interval $I$ is \grass{L-acceptable} if the function $t\fd L(\statot,\mut)$ is integrable.
 	
 	\item given a Lagrangian $L$, the corresponding \grass{objective function} is the map $J_{\Sigma,L}:Ctraj(\Sigma)\fd\overline{\R}$ given by 
 	\equaz{J_{\Sigma,L}\controlledTrajMath=\int_I L(\statot,\mut)dt}
